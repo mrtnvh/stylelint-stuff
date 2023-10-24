@@ -1,0 +1,37 @@
+{
+  "name": "stylelint-config-mrtnvh",
+  "description": "Opinionated stylelint config",
+  "version": "1.0.0",
+  "exports": {
+    ".": "./src/core/core.js",
+    "./a11y.js": "./src/a11y/a11y.js"
+  },
+  "scripts": {
+    "test": "node --test",
+    "test:watch": "node --test --watch",
+    "stylelint-find-rules": "stylelint-find-new-rules src/core/core.js"
+  },
+  "dependencies": {
+    "postcss-html": "^1.5.0",
+    "stylelint-a11y": "^1.2.3",
+    "stylelint-config-recess-order": "^3.1.0",
+    "stylelint-config-recommended": "^8.0.0",
+    "stylelint-config-standard": "^34.0.0",
+    "stylelint-csstree-validator": "^2.1.0",
+    "stylelint-declaration-block-no-ignored-properties": "^2.7.0",
+    "stylelint-declaration-strict-value": "^1.9.2",
+    "stylelint-high-performance-animation": "^1.9.0",
+    "stylelint-plugin-defensive-css": "^0.8.1",
+    "stylelint-plugin-logical-css": "^0.13.2",
+    "stylelint-selector-bem-pattern": "^3.0.1",
+    "stylelint-selector-tag-no-without-class": "^2.0.6",
+    "stylelint-use-nesting": "^4.1.0"
+  },
+  "devDependencies": {
+    "stylelint-find-new-rules": "^4.1.2",
+    "stylelint": "^15.10.3"
+  },
+  "volta": {
+    "node": "20.8.0"
+  }
+}

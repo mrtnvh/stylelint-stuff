@@ -1,0 +1,10 @@
+.foo {
+  content: "FOO";
+  font-size: 14px;
+  max-width: 40ch;
+  text-transform: uppercase;
+  text-align: justify;
+}
+
+xmp {
+}

@@ -1,0 +1,10 @@
+.foo {
+  font-size: 15px;
+  max-width: 50ch;
+  text-transform: uppercase;
+  text-align: right;
+}
+
+.foo::before {
+  /* content: ""; */
+}
