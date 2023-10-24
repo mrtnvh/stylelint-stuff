@@ -6,6 +6,10 @@
     ".": "./src/core/core.js",
     "./a11y.js": "./src/a11y/a11y.js"
   },
+  "files": [
+    "src/core/core.js",
+    "src/a11y/a11y.js"
+  ],
   "scripts": {
     "test": "node --test",
     "test:watch": "node --test --watch",
