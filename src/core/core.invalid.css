@@ -1,3 +1,7 @@
+/* import-notation */
+@import "foo.css";
+
+/* custom-media-pattern */
 @custom-media --FOO;
 
 :root {
@@ -17,4 +21,266 @@
 
 #FOO {
   /* ... */
+}
+
+.alpha-value-notation {
+  background-color: rgb(0 0 0 / 50%);
+  opacity: 100%;
+}
+
+/* To prevent testing collisions */
+/* stylelint-disable scale-unlimited/declaration-strict-value, block-no-empty */
+/* prettier-ignore */
+a {}
+@media {
+}
+
+.at-rule-no-vendor-prefix {
+  -webkit-transform: -webkit-translate(1px, 1px);
+}
+
+.color-function-notation {
+  .one {
+    color: rgb(0, 0, 0);
+  }
+  .two {
+    color: rgba(12, 122, 231, 0.2);
+  }
+  .three {
+    color: hsla(270, 60%, 50%, 15%);
+  }
+  .four {
+    color: hsl(0.75turn, 60%, 70%);
+  }
+}
+
+.color-hex-length {
+  color: #ffffff;
+}
+
+.comment-empty-line-before {
+  /* Comment */
+  background: pink;
+  /* Comment */
+  margin: 0;
+  /* stylelint-disable-next-line color-no-hex */
+  color: pink;
+
+  /* comment */
+}
+
+.comment-whitespace-inside {
+  /*Comment */
+}
+
+.custom-property-empty-line-before {
+  inset-block-start: 10px;
+  --foo: pink;
+}
+
+.custom-property-pattern {
+  --ThisIsAnInvalidCustomProperty: pink;
+  --this_is_an_invalid_custom_property: pink;
+  --thisIsAnInvalidCustomProperty: pink;
+}
+
+.declaration-block-no-redundant-longhand-properties {
+  margin-block-start: 0;
+  margin-inline-end: 0;
+  margin-inline-start: 0;
+  margin-block-end: 0;
+}
+
+.declaration-block-single-line-max-declarations-a {
+  color: pink;
+  background: pink;
+  margin: 0;
+}
+
+.declaration-block-single-line-max-declarations-b {
+  color: pink;
+  background: pink;
+  margin: 0;
+}
+.declaration-empty-line-before {
+  color: pink;
+}
+
+.font-family-name-quotes {
+  font-family: Times New Roman, Times, MyFontVersion6, sake_case_font, serif;
+}
+
+.function-name-case {
+  width: CALC(5% - 10em);
+}
+
+.function-url-quote {
+  background: url(backdrop.png);
+}
+
+.hue-degree-notation {
+  color: hsl(5 10% 40%);
+}
+
+.keyframe-selector-notation {
+  @keyframes foo {
+    from {
+    }
+    100% {
+    }
+  }
+}
+
+.keyframes-name-pattern {
+  @keyframes invalidKeyFrameName {
+    from {
+    }
+    to {
+    }
+  }
+  @keyframes invalid_key_frame_name {
+    from {
+    }
+    to {
+    }
+  }
+  @keyframes InvalidKeyFrameName {
+    from {
+    }
+    to {
+    }
+  }
+}
+
+.length-zero-no-unit {
+  inset-block-start: 0px;
+}
+
+.lightness-notation {
+  color: oklch(0.85 0.17 88);
+}
+
+@media (-webkit-min-device-pixel-ratio: 1) {
+  .media-feature-name-no-vendor-prefix {
+    color: pink;
+  }
+}
+
+@media (min-width: 1px) {
+  .media-feature-range-notation-a {
+    color: pink;
+  }
+}
+
+@media (min-width: 1px) and (max-width: 2px) {
+  .media-feature-range-notation-b {
+    color: pink;
+  }
+}
+
+.number-max-precision {
+  inset-block-start: 3.245634px;
+}
+
+.property-no-vendor-prefix {
+  -webkit-transform: 30em;
+}
+
+.rule-empty-line-before-a {
+}
+.rule-empty-line-before-b {
+}
+
+.rule-empty-line-before-c {
+}
+.rule-empty-line-before-d {
+}
+
+@media {
+  .rule-empty-line-before-a {
+  }
+
+  .rule-empty-line-before-b {
+  }
+}
+
+[selector-attribute-quotes="flower"] {
+}
+
+[selector-attribute-quotes^="top"] {
+}
+
+.SelectorClassPatternA {
+}
+
+.selectorClassPatternB {
+}
+
+.selector_class_pattern_c {
+}
+
+#SelectorClassPatternA {
+}
+
+#selectorClassPatternB {
+}
+
+#selector_class_pattern_c {
+}
+
+selector-no-vendor-prefix::-moz-placeholder {
+}
+
+selector-not-notation-complex:not(a):not(div) {
+  color: pink;
+}
+
+/* selector-type-case */
+A {
+}
+
+LI {
+}
+
+/* shorthand-property-no-redundant-values */
+.shorthand-property-no-redundant-values {
+  margin: 1px 1px;
+}
+
+.shorthand-property-no-redundant-values {
+  margin: 1px 1px 1px 1px;
+}
+
+.shorthand-property-no-redundant-values {
+  padding: 1px 2px 1px;
+}
+
+.shorthand-property-no-redundant-values {
+  border-radius: 1px 2px 1px 2px;
+}
+
+/* value-keyword-case */
+.value-keyword-case {
+  display: Block;
+}
+
+.value-keyword-case {
+  display: bLoCk;
+}
+
+.value-keyword-case {
+  display: BLOCK;
+}
+
+/* value-no-vendor-prefix */
+.value-no-vendor-prefix {
+  display: -webkit-flex;
+}
+
+.value-no-vendor-prefix {
+  max-width: -moz-max-content;
+}
+
+.value-no-vendor-prefix {
+  background: -webkit-linear-gradient(bottom, #000, #fff);
 }

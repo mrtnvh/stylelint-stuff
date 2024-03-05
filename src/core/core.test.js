@@ -42,34 +42,22 @@ describe("core", () => {
     });
 
     test("flags warnings", () => {
-      assert.equal(result.results[0].warnings.length, 6);
+      assert.equal(result.results[0].warnings.length, 104);
     });
 
-    test("correct warning text", () => {
-      assert.deepEqual(
-        result.results[0].warnings.map((w) => w.text),
-        [
-          'Expected variable, function or keyword for "#000" of "color" (scale-unlimited/declaration-strict-value)',
-          "Unknown at-rule `@custom-media` (csstree/validator)",
-          'Expected "padding" to come before "color" (order/properties-order)',
-          'Expected custom media query name "--FOO" to be kebab-case',
-          'Expected keyframe name "FOO" to be kebab-case',
-          'Expected id selector "#FOO" to be kebab-case',
-        ]
+    test("correct warning text", async () => {
+      const { default: assertSnapshot } = await import("snapshot-assertion");
+      await assertSnapshot(
+        JSON.stringify(result.results[0].warnings.map((w) => w.text)),
+        resolve(__dirname, "./__snapshots__/core.test.js/correct-warning-text.json")
       );
     });
 
-    test("correct rule flagged", () => {
-      assert.deepStrictEqual(
-        result.results[0].warnings.map((w) => w.rule),
-        [
-          "scale-unlimited/declaration-strict-value",
-          "csstree/validator",
-          "order/properties-order",
-          "custom-media-pattern",
-          "keyframes-name-pattern",
-          "selector-id-pattern",
-        ]
+    test("correct rule flagged", async () => {
+      const { default: assertSnapshot } = await import("snapshot-assertion");
+      await assertSnapshot(
+        JSON.stringify(result.results[0].warnings.map((w) => w.rule)),
+        resolve(__dirname, "./__snapshots__/core.test.js/correct-rule-flagged.json")
       );
     });
 
@@ -78,11 +66,11 @@ describe("core", () => {
     });
 
     test("correct line number", () => {
-      assert.equal(result.results[0].warnings[0].line, 14);
+      assert.equal(result.results[0].warnings[0].line, 5);
     });
 
     test("correct column number", () => {
-      assert.equal(result.results[0].warnings[0].column, 3);
+      assert.equal(result.results[0].warnings[0].column, 1);
     });
   });
 
