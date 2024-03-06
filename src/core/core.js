@@ -46,20 +46,10 @@ module.exports = {
     "font-weight-notation": "numeric",
 
     // https://stylelint.io/user-guide/rules/media-feature-name-no-unknown/
-    // TODO - are logical properties already supported by the rule?
-    "media-feature-name-no-unknown": [true, { ignoreMediaFeatureNames: [/.*-(inline|block)-size/] }],
+    "media-feature-name-no-unknown": true,
 
     // https://stylelint.io/user-guide/rules/media-feature-name-no-vendor-prefix/
     "media-feature-name-no-vendor-prefix": true,
-
-    // https://stylelint.io/user-guide/rules/property-no-vendor-prefix/
-    "property-no-vendor-prefix": true,
-
-    // https://stylelint.io/user-guide/rules/value-no-vendor-prefix/
-    "value-no-vendor-prefix": true,
-
-    // https://stylelint.io/user-guide/rules/selector-no-vendor-prefix/
-    "selector-no-vendor-prefix": true,
 
     // https://stylelint.io/user-guide/rules/selector-max-universal/
     "selector-max-universal": 1,
@@ -69,17 +59,6 @@ module.exports = {
 
     // https://stylelint.io/user-guide/rules/selector-max-compound-selectors/
     "selector-max-compound-selectors": 3,
-
-    // https://stylelint.io/user-guide/rules/rule-empty-line-before/
-    "at-rule-empty-line-before": [
-      "always",
-      {
-        // Only for SCSS
-        ignoreAtRules: ["else"],
-        except: ["blockless-after-same-name-blockless", "first-nested"],
-        ignore: ["after-comment"],
-      },
-    ],
 
     // https://stylelint.io/user-guide/rules/color-named/#never
     "color-named": "never",
@@ -91,12 +70,6 @@ module.exports = {
 
     // https://stylelint.io/user-guide/rules/declaration-block-no-redundant-longhand-properties/
     "declaration-block-no-redundant-longhand-properties": [true, { ignoreShorthands: ["/font/"] }],
-
-    // https://stylelint.io/user-guide/rules/selector-class-pattern/
-    "selector-class-pattern": null,
-
-    // https://stylelint.io/user-guide/rules/custom-property-pattern/
-    "custom-property-pattern": null,
 
     // https://stylelint.io/user-guide/rules/custom-media-pattern/
     // Disallow custom media queries because:
@@ -139,19 +112,20 @@ module.exports = {
       // For properties containing color, or are z-index, font-size, or font-family
       ["/color/", "z-index", "font-size", "font-family"],
       {
-        ignoreKeywords: {
+        ignoreValues: {
           // Do not throw error for any property if value is 'inherit'
           "": ["inherit"],
-          // Do not throw error for properties containing color if value is 'currentColor', 'transparent', or 'inherit'
-          "/color/": ["currentColor", "transparent", "inherit"],
+          // Do not throw error for properties containing color if value is 'currentColor', 'transparent'
+          "/color/": ["currentcolor", "transparent", "inherit"],
         },
+        // Disable autofix, because we are dealing with dynamic fixes we have program ourselves
         disableFix: true,
       },
     ],
 
     // Warn author to use logical properties
     // https://github.com/yuschick/stylelint-plugin-logical-css
-    "plugin/use-logical-properties-and-values": [true, { severity: "warning" }],
-    "plugin/use-logical-units": [true, { severity: "warning" }],
+    "plugin/use-logical-properties-and-values": true,
+    "plugin/use-logical-units": true,
   },
 };

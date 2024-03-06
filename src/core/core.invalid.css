@@ -23,16 +23,14 @@
   /* ... */
 }
 
-.alpha-value-notation {
-  background-color: rgb(0 0 0 / 50%);
-  opacity: 100%;
-}
-
 /* To prevent testing collisions */
 /* stylelint-disable scale-unlimited/declaration-strict-value, block-no-empty */
 /* prettier-ignore */
-a {}
+a {
+  color: var(--foo);
+}
 @media {
+  color: var(--foo);
 }
 
 .at-rule-no-vendor-prefix {
@@ -60,11 +58,11 @@ a {}
 
 .comment-empty-line-before {
   /* Comment */
-  background: pink;
+  background: var(--foo);
   /* Comment */
   margin: 0;
   /* stylelint-disable-next-line color-no-hex */
-  color: pink;
+  color: var(--foo);
 
   /* comment */
 }
@@ -75,39 +73,39 @@ a {}
 
 .custom-property-empty-line-before {
   inset-block-start: 10px;
-  --foo: pink;
+  --foo: #fff;
 }
 
 .custom-property-pattern {
-  --ThisIsAnInvalidCustomProperty: pink;
-  --this_is_an_invalid_custom_property: pink;
-  --thisIsAnInvalidCustomProperty: pink;
+  --ThisIsAnInvalidCustomProperty: #fff;
+  --this_is_an_invalid_custom_property: #fff;
+  --thisIsAnInvalidCustomProperty: #fff;
 }
 
 .declaration-block-no-redundant-longhand-properties {
   margin-block-start: 0;
-  margin-inline-end: 0;
-  margin-inline-start: 0;
   margin-block-end: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
 }
 
 .declaration-block-single-line-max-declarations-a {
-  color: pink;
-  background: pink;
   margin: 0;
+  color: var(--foo);
+  background: var(--foo);
 }
 
 .declaration-block-single-line-max-declarations-b {
-  color: pink;
-  background: pink;
   margin: 0;
+  color: var(--foo);
+  background: var(--foo);
 }
 .declaration-empty-line-before {
-  color: pink;
+  color: var(--foo);
 }
 
 .font-family-name-quotes {
-  font-family: Times New Roman, Times, MyFontVersion6, sake_case_font, serif;
+  font-family: Times New Roman, Times, MyFontVersion6, snake_case_font, serif;
 }
 
 .function-name-case {
@@ -126,6 +124,7 @@ a {}
   @keyframes foo {
     from {
     }
+
     100% {
     }
   }
@@ -135,18 +134,23 @@ a {}
   @keyframes invalidKeyFrameName {
     from {
     }
+
     to {
     }
   }
+
   @keyframes invalid_key_frame_name {
     from {
     }
+
     to {
     }
   }
+
   @keyframes InvalidKeyFrameName {
     from {
     }
+
     to {
     }
   }
@@ -162,19 +166,19 @@ a {}
 
 @media (-webkit-min-device-pixel-ratio: 1) {
   .media-feature-name-no-vendor-prefix {
-    color: pink;
+    color: var(--foo);
   }
 }
 
 @media (min-width: 1px) {
   .media-feature-range-notation-a {
-    color: pink;
+    color: var(--foo);
   }
 }
 
 @media (min-width: 1px) and (max-width: 2px) {
   .media-feature-range-notation-b {
-    color: pink;
+    color: var(--foo);
   }
 }
 
@@ -183,56 +187,72 @@ a {}
 }
 
 .property-no-vendor-prefix {
-  -webkit-transform: 30em;
+  -webkit-transform: translate(30em);
 }
 
 .rule-empty-line-before-a {
+  color: var(--foo);
 }
 .rule-empty-line-before-b {
+  color: var(--foo);
 }
 
 .rule-empty-line-before-c {
+  color: var(--foo);
 }
 .rule-empty-line-before-d {
+  color: var(--foo);
 }
 
-@media {
+@media screen {
+
   .rule-empty-line-before-a {
+    color: var(--foo);
   }
 
   .rule-empty-line-before-b {
+    color: var(--foo);
   }
 }
 
 [selector-attribute-quotes="flower"] {
+  color: var(--foo);
 }
 
 [selector-attribute-quotes^="top"] {
+  color: var(--foo);
 }
 
 .SelectorClassPatternA {
+  color: var(--foo);
 }
 
 .selectorClassPatternB {
+  color: var(--foo);
 }
 
 .selector_class_pattern_c {
+  color: var(--foo);
 }
 
 #SelectorClassPatternA {
+  color: var(--foo);
 }
 
 #selectorClassPatternB {
+  color: var(--foo);
 }
 
 #selector_class_pattern_c {
+  color: var(--foo);
 }
 
 selector-no-vendor-prefix::-moz-placeholder {
+  color: var(--foo);
 }
 
 selector-not-notation-complex:not(a):not(div) {
-  color: pink;
+  color: var(--foo);
 }
 
 /* selector-type-case */
@@ -243,44 +263,182 @@ LI {
 }
 
 /* shorthand-property-no-redundant-values */
-.shorthand-property-no-redundant-values {
+.shorthand-property-no-redundant-values-a {
   margin: 1px 1px;
 }
 
-.shorthand-property-no-redundant-values {
+.shorthand-property-no-redundant-values-b {
   margin: 1px 1px 1px 1px;
 }
 
-.shorthand-property-no-redundant-values {
+.shorthand-property-no-redundant-values-c {
   padding: 1px 2px 1px;
 }
 
-.shorthand-property-no-redundant-values {
+.shorthand-property-no-redundant-values-d {
   border-radius: 1px 2px 1px 2px;
 }
 
 /* value-keyword-case */
-.value-keyword-case {
+.value-keyword-case-a {
   display: Block;
 }
 
-.value-keyword-case {
+.value-keyword-case-b {
   display: bLoCk;
 }
 
-.value-keyword-case {
+.value-keyword-case-c {
   display: BLOCK;
 }
 
 /* value-no-vendor-prefix */
-.value-no-vendor-prefix {
+.value-no-vendor-prefix-a {
   display: -webkit-flex;
 }
 
-.value-no-vendor-prefix {
-  max-width: -moz-max-content;
+.value-no-vendor-prefix-b {
+  max-inline-size: -moz-max-content;
 }
 
-.value-no-vendor-prefix {
+.value-no-vendor-prefix-c {
   background: -webkit-linear-gradient(bottom, #000, #fff);
+}
+
+/* max-nesting-depth */
+.max-nesting-depth-a {
+  .max-nesting-depth-b {
+    .max-nesting-depth-c {
+      max-nesting-depth-d {
+        color: var(--foo);
+      }
+    }
+  }
+}
+
+/* function-url-no-scheme-relative */
+.function-url-no-scheme-relative {
+  background: url("//example.com/images/image.png");
+}
+
+/* stylelint-enable scale-unlimited/declaration-strict-value */
+.stylelint-declaration-strict-value-a {
+  color: #fff;
+}
+
+.stylelint-declaration-strict-value-b {
+  z-index: 5;
+}
+
+.stylelint-declaration-strict-value-c {
+  font-size: 3rem;
+}
+/* stylelint-disable scale-unlimited/declaration-strict-value */
+
+/* function-url-quotes */
+.function-url-quotes {
+  background: url(backdrop.png);
+}
+
+/* font-weight-notation */
+.font-weight-notation {
+  font-weight: bold;
+}
+
+/* media-feature-name-no-unknown */
+@media screen and (unknown) {
+}
+
+@media (inline-size >= 700px) {
+}
+
+/* media-feature-name-no-vendor-prefix */
+@media (-webkit-min-device-pixel-ratio: 1) {
+}
+
+/* selector-max-universal */
+* + * {
+  color: var(--foo);
+}
+
+/* selector-max-specificity */
+#selector-max-specificity-a #selector-max-specificity-b {
+  color: var(--brand-red);
+}
+
+.foo .bar .baz .foz {
+  color: var(--brand-red);
+}
+
+a article section details {
+  color: var(--brand-red);
+}
+
+/* selector-max-compound-selectors */
+#selector-max-specificity-d .foo .bar .baz a article section details {
+  color: var(--brand-red);
+}
+
+/* .color-named */
+.color-named {
+  color: pink;
+}
+
+/* alpha-value-notation */
+.alpha-value-notation {
+  background-color: rgb(0 0 0 / 50%);
+  opacity: 100%;
+}
+
+/* plugin/no-low-performance-animation-properties */
+.no-low-performance-animation-properties {
+  transition: height 0.5s ease-in-out;
+}
+
+/* plugin/selector-tag-no-without-class */
+div,
+span {
+  color: var(--foo);
+}
+
+/* csstools/use-nesting */
+.use-nesting {
+  color: var(--foo);
+}
+
+.use-nesting:hover {
+  color: var(--foo);
+}
+
+@media (width >= 640px) {
+  .use-nesting {
+    color: var(--foo);
+  }
+}
+
+/* scale-unlimited/declaration-strict-value */
+.scale-unlimited-declaration-strict-value-a {
+  color: #fff;
+}
+
+.scale-unlimited-declaration-strict-value-b {
+  font-size: 1.5rem;
+}
+
+.scale-unlimited-declaration-strict-value-c {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+/* plugin/use-logical-properties-and-values */
+.use-logical-properties-and-values {
+  margin-top: 1px;
+  margin-right: 1px;
+  margin-bottom: 1px;
+  margin-left: 1px;
+}
+
+/* plugin/use-logical-units */
+.use-logical-units {
+  inline-size: 100vh;
+  block-size: 100vw;
 }

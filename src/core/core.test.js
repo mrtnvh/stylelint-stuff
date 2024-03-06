@@ -42,7 +42,7 @@ describe("core", () => {
     });
 
     test("flags warnings", () => {
-      assert.equal(result.results[0].warnings.length, 104);
+      assert.equal(result.results[0].warnings.length, 108);
     });
 
     test("correct warning text", async () => {
@@ -66,11 +66,11 @@ describe("core", () => {
     });
 
     test("correct line number", () => {
-      assert.equal(result.results[0].warnings[0].line, 5);
+      assert.equal(result.results[0].warnings[0].line, 395);
     });
 
     test("correct column number", () => {
-      assert.equal(result.results[0].warnings[0].column, 1);
+      assert.equal(result.results[0].warnings[0].column, 15);
     });
   });
 
