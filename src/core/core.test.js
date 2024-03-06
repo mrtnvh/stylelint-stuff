@@ -42,7 +42,7 @@ describe("core", () => {
     });
 
     test("flags warnings", () => {
-      assert.equal(result.results[0].warnings.length, 108);
+      assert.equal(result.results[0].warnings.length, 123);
     });
 
     test("correct warning text", async () => {

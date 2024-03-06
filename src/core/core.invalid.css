@@ -442,3 +442,30 @@ span {
   inline-size: 100vh;
   block-size: 100vw;
 }
+
+/* plugin/use-defensive-css accidental-hover */
+.fail-btn:hover {
+  color: var(--brand-red);
+}
+
+/* background-repeat */
+.background-repeat-a {
+  background: url('some-image.jpg') black top center;
+}
+
+.background-repeat-b {
+  background-image: url('some-image.jpg');
+}
+
+/* scroll-chaining */
+.scroll-chaining-a {
+  overflow-inline: auto;
+}
+
+.scroll-chaining-b {
+  overflow: hidden scroll;
+}
+
+.scroll-chaining-c {
+  overflow-block: auto;
+}

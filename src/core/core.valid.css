@@ -35,6 +35,7 @@
     display: block;
     content: "→";
     background-image: url("x.svg");
+    background-repeat: no-repeat;
   }
 }
 
@@ -172,6 +173,7 @@
 /* function-url-quote */
 .function-url-quote {
   background: url("backdrop.png");
+  background-repeat: no-repeat;
 }
 
 /* hue-degree-notation */
@@ -340,6 +342,7 @@ li {
 /* value-no-vendor-prefix */
 .value-no-vendor-prefix-b {
   display: flex;
+  flex-wrap: nowrap;
 }
 
 .value-no-vendor-prefix-c {
@@ -376,23 +379,28 @@ li {
 /* function-url-no-scheme-relative */
 .function-url-no-scheme-relative-a {
   background: url("https://example.com/images/image.png");
+  background-repeat: no-repeat;
 }
 
 .function-url-no-scheme-relative-b {
   background: url("../images/image.png");
+  background-repeat: no-repeat;
 }
 
 .function-url-no-scheme-relative-c {
   background: url("http://example.com/images/image.png");
+  background-repeat: no-repeat;
 }
 
 .function-url-no-scheme-relative-d {
   background: url("/images/image.png");
+  background-repeat: no-repeat;
 }
 
 /* function-url-quotes */
 .function-url-quotes {
   background: url("backdrop.png");
+  background-repeat: no-repeat;
 }
 
 /* font-weight-notation */
@@ -462,8 +470,10 @@ a article section {
 .use-nesting {
   color: var(--color-white);
 
-  &:hover {
-    color: var(--brand-red);
+  @media (hover: hover) {
+    &:hover {
+      color: var(--brand-red);
+    }
   }
 
   @media (width >= 640px) {
@@ -515,4 +525,44 @@ a article section {
 .use-logical-units {
   inline-size: 100vi;
   block-size: 100vb;
+}
+
+/* plugin/use-defensive-css accidental-hover */
+@media (hover: hover) {
+  .accidental-hover:hover {
+    color: var(--brand-red);
+  }
+}
+
+/* background-repeat */
+.background-repeat-a {
+  background: url("some-image.jpg") repeat var(--brand-red) top center;
+}
+
+.background-repeat-b {
+  background: url("some-image.jpg") var(--brand-red) top center;
+  background-repeat: no-repeat;
+}
+
+/* scroll-chaining, scrollbar-gutter */
+.scroll-chaining-a {
+  overflow-inline: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-gutter: auto;
+}
+
+.scroll-chaining-b {
+  overflow: hidden scroll;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+}
+
+.scroll-chaining-c {
+  overflow: hidden; /* No overscroll-behavior or scrollbar-gutter is needed in the case of hidden */
+}
+
+.scroll-chaining-d {
+  overflow-block: auto;
+  overscroll-behavior: none;
+  scrollbar-gutter: stable both-edges;
 }

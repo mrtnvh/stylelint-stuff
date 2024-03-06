@@ -28,6 +28,9 @@ module.exports = {
 
     // https://github.com/yuschick/stylelint-plugin-logical-css
     "stylelint-plugin-logical-css",
+
+    // https://github.com/yuschick/stylelint-plugin-defensive-css
+    "stylelint-plugin-defensive-css",
   ],
 
   rules: {
@@ -127,5 +130,32 @@ module.exports = {
     // https://github.com/yuschick/stylelint-plugin-logical-css
     "plugin/use-logical-properties-and-values": true,
     "plugin/use-logical-units": true,
+
+    // https://github.com/yuschick/stylelint-plugin-defensive-css
+    "plugin/use-defensive-css": [
+      true,
+      {
+        // https://github.com/yuschick/stylelint-plugin-defensive-css?tab=readme-ov-file#accidental-hover
+        "accidental-hover": true,
+
+        // https://github.com/yuschick/stylelint-plugin-defensive-css?tab=readme-ov-file#background-repeat
+        "background-repeat": true,
+
+        // https://github.com/yuschick/stylelint-plugin-defensive-css?tab=readme-ov-file#custom-property-fallbacks
+        "custom-property-fallbacks": false,
+
+        // https://github.com/yuschick/stylelint-plugin-defensive-css?tab=readme-ov-file#flex-wrapping
+        "flex-wrapping": true,
+
+        // https://github.com/yuschick/stylelint-plugin-defensive-css?tab=readme-ov-file#scroll-chaining
+        "scroll-chaining": true,
+
+        // https://github.com/yuschick/stylelint-plugin-defensive-css?tab=readme-ov-file#scrollbar-gutter
+        "scrollbar-gutter": true,
+
+        // https://github.com/yuschick/stylelint-plugin-defensive-css?tab=readme-ov-file#vendor-prefix-grouping
+        "vendor-prefix-grouping": false,
+      },
+    ],
   },
 };
