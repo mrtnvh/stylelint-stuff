@@ -32,7 +32,6 @@
     "stylelint-high-performance-animation": "^1.10.0",
     "stylelint-plugin-defensive-css": "^1.0.2",
     "stylelint-plugin-logical-css": "^0.13.2",
-    "stylelint-selector-bem-pattern": "^4.0.0",
     "stylelint-selector-tag-no-without-class": "^2.0.6",
     "stylelint-use-nesting": "^4.1.0"
   },
