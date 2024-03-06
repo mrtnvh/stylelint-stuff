@@ -15,8 +15,8 @@
 /* Single-line comment */
 
 .class-foo:not(a, div) {
-  margin: 0;
   inset-block-start: calc(100% - 2rem);
+  margin: 0;
 }
 
 /* Flush single line comment */
@@ -25,9 +25,9 @@
     /* Flush to parent comment */
     --offset: 0px;
 
+    inset-inline-start: calc(var(--offset) + 50%);
     font-family: var(--font-family);
     color: var(--color-white);
-    inset-inline-start: calc(var(--offset) + 50%);
   }
 
   /* Flush nested single line comment */
@@ -183,8 +183,8 @@
 .length-zero-no-unit {
   --length-zero-no-unit: 0px;
 
-  transition-delay: 0s;
   inset-block-start: 1.001vb;
+  transition-delay: 0s;
 }
 
 /* lightness-notation */

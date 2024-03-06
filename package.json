@@ -17,19 +17,22 @@
     "test:watch": "node --test --watch",
     "stylelint-find-rules": "stylelint-find-new-rules src/core/core.js"
   },
+  "peerDependencies": {
+    "stylelint": "^15.11.0"
+  },
   "dependencies": {
     "postcss-html": "^1.6.0",
     "stylelint-a11y": "^1.2.3",
-    "stylelint-config-recess-order": "^3.1.0",
-    "stylelint-config-recommended": "^8.0.0",
+    "stylelint-config-recess-order": "^4.6.0",
+    "stylelint-config-recommended": "^14.0.0",
     "stylelint-config-standard": "^34.0.0",
-    "stylelint-csstree-validator": "^2.1.0",
+    "stylelint-csstree-validator": "^3.0.0",
     "stylelint-declaration-block-no-ignored-properties": "^2.8.0",
     "stylelint-declaration-strict-value": "^1.10.4",
     "stylelint-high-performance-animation": "^1.10.0",
-    "stylelint-plugin-defensive-css": "^0.8.1",
+    "stylelint-plugin-defensive-css": "^1.0.2",
     "stylelint-plugin-logical-css": "^0.13.2",
-    "stylelint-selector-bem-pattern": "^3.0.1",
+    "stylelint-selector-bem-pattern": "^4.0.0",
     "stylelint-selector-tag-no-without-class": "^2.0.6",
     "stylelint-use-nesting": "^4.1.0"
   },
