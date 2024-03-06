@@ -480,6 +480,12 @@ a article section {
   text-wrap: balance;
 }
 
+@layer components {
+  .csstree-validator {
+    color: var(--color-white);
+  }
+}
+
 /* scale-unlimited/declaration-strict-value */
 .declaration-strict-value-0 {
   font-size: inherit;

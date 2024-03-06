@@ -98,7 +98,7 @@ module.exports = {
     // use valid css
     // https://github.com/csstree/validator
     "csstree/validator": {
-      ignoreAtrules: ["container", "layer"],
+      ignoreAtrules: ["container"],
       ignoreProperties: ["container", "container-type", "container-name", "text-wrap"],
       ignoreValue: "oklch",
     },
