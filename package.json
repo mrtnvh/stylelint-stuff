@@ -1,42 +1,12 @@
 {
-  "name": "stylelint-config-mrtnvh",
-  "description": "Opinionated stylelint config",
-  "version": "1.0.0",
-  "exports": {
-    ".": "./src/core/core.js",
-    "./a11y.js": "./src/a11y/a11y.js"
-  },
-  "files": [
-    "src/core/core.js",
-    "src/a11y/a11y.js"
+  "name": "stylelint-stuff",
+  "description": "Collection of stylelint plugins and configs",
+  "workspaces": [
+    "configs/**",
+    "plugins/**"
   ],
   "scripts": {
-    "lint:core": "stylelint -c src/core/core.js src/core/*.css",
-    "lint:a11y": "stylelint -c src/a11y/a11y.js src/a11y/*.css",
-    "test": "node --test",
-    "test:watch": "node --test --watch",
-    "stylelint-find-rules": "stylelint-find-new-rules src/core/core.js"
-  },
-  "peerDependencies": {
-    "stylelint": "^15.11.0"
-  },
-  "dependencies": {
-    "stylelint-a11y": "^1.2.3",
-    "stylelint-config-recess-order": "^4.6.0",
-    "stylelint-config-standard": "^34.0.0",
-    "stylelint-csstree-validator": "^3.0.0",
-    "stylelint-declaration-block-no-ignored-properties": "^2.8.0",
-    "stylelint-declaration-strict-value": "^1.10.4",
-    "stylelint-high-performance-animation": "^1.10.0",
-    "stylelint-plugin-defensive-css": "^0.10.4",
-    "stylelint-plugin-logical-css": "^0.13.2",
-    "stylelint-selector-tag-no-without-class": "^2.0.6",
-    "stylelint-use-nesting": "^4.1.0"
-  },
-  "devDependencies": {
-    "snapshot-assertion": "^5.0.0",
-    "stylelint": "^15.11.0",
-    "stylelint-find-new-rules": "^4.1.2"
+    "test": "npm test --workspaces"
   },
   "volta": {
     "node": "20.8.0"
