@@ -1,0 +1,21 @@
+@layer components {
+  .component {
+    color: #aaa;
+  }
+}
+
+
+@layer base {
+  @layer components {
+    @layer variables {
+      .component {
+        color: #aaa;
+      }
+    }
+  }
+}
+
+@font-face {
+  font-family: 'TestFont';
+  src: url('./test-font.woff');
+}

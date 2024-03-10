@@ -6,7 +6,8 @@
     "plugins/**"
   ],
   "scripts": {
-    "test": "npm test --workspaces"
+    "build": "npm run build --workspaces",
+    "test": "npm run test --workspaces"
   },
   "volta": {
     "node": "20.8.0"
