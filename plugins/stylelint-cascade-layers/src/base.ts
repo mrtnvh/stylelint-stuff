@@ -1,5 +1,11 @@
 import stylelint from "stylelint";
-import type { Container, ChildNode, Declaration } from "postcss";
+
+export type PrimaryOption = boolean;
+
+export type SecondaryOptions = {
+  ignoreAtRules: Array<string>;
+  ignoreSelectors: Array<string>;
+};
 
 export const ruleName = "cascade-layers/require-layers";
 
@@ -12,3 +18,17 @@ export const ruleMessages = stylelint.utils.ruleMessages(ruleName, {
     return `Unexpected unlayered ${type} "${name}"`;
   },
 });
+
+export const ruleDefaultSecondaryOptions = {
+  ignoreAtRules: [
+    "@charset",
+    "@font-face",
+    "@font-feature-values",
+    "@font-palette-values",
+    "@import",
+    "@keyframes",
+    "@property",
+    "@styleset",
+  ],
+  ignoreSelectors: [],
+};

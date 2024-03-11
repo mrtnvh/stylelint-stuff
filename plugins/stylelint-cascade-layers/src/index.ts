@@ -2,34 +2,64 @@ import stylelint from "stylelint";
 import type { Rule, PostcssResult } from "stylelint";
 import type { Container, ChildNode, Declaration } from "postcss";
 
-import { ruleMeta, ruleName, ruleMessages as messages } from "./base.js";
+import {
+  ruleMeta,
+  ruleName,
+  ruleMessages as messages,
+  ruleDefaultSecondaryOptions,
+  type PrimaryOption,
+  type SecondaryOptions,
+} from "./base.js";
 
 const {
   createPlugin,
   utils: { report, validateOptions },
 } = stylelint;
 
-function traverseParentRules(parent: Container<ChildNode> | undefined) {
-  if (!parent?.parent) return false;
-  if (parent.parent.type === "root") return false;
+function traverseParentRules(parent: Container<ChildNode> | undefined, secondaryOptions: SecondaryOptions) {
+  const parentParent = parent?.parent as Container<ChildNode> | undefined;
+  if (!parentParent) return false;
+  const { type } = parentParent;
 
-  // @ts-ignore
-  if (parent.parent.type === "atrule" && parent.parent.name === "layer") {
+  if (type === "root") return false;
+
+  if (type === "atrule" && testIfNodeToIgnore(parentParent, secondaryOptions)) {
     return true;
   }
 
-  // @ts-ignore
-  return traverseParentRules(parent.parent);
+  return traverseParentRules(parentParent, secondaryOptions);
 }
 
-function testIfWrappedInLayer(decl: Declaration, result: PostcssResult) {
+function testIfNodeToIgnore(node: Container<ChildNode>, secondaryOptions: SecondaryOptions) {
+  // @ts-ignore
+  const nodeName = node.name as string;
+  // @ts-ignore
+  const nodeSelector = node.selector as string;
+
+  const isLayerAtRule = nodeName === "layer";
+
+  const atRuleToIgnore = secondaryOptions.ignoreAtRules.some((ignoreAtRule) => {
+    const sanitizedIgnoreAtRule = ignoreAtRule.replace("@", "");
+    return sanitizedIgnoreAtRule === nodeName;
+  });
+
+  const selectorToIgnore = secondaryOptions.ignoreSelectors.some((ignoreSelectors) => ignoreSelectors === nodeSelector);
+
+  if (isLayerAtRule || atRuleToIgnore || selectorToIgnore) return true;
+}
+
+function testIfWrappedInLayer(decl: Declaration, result: PostcssResult, secondaryOptions: SecondaryOptions) {
   const parent = decl.parent;
   if (!parent) return;
-  const isWrappedInLayerAtRule = traverseParentRules(parent);
 
-  // Do not require font-face to be layered
   // @ts-ignore
-  if (/font\-face/.test(parent.name)) return;
+  const parentName = parent.name as string;
+  // @ts-ignore
+  const parentSelector = parent.selector as string;
+
+  if (testIfNodeToIgnore(parent, secondaryOptions)) return;
+
+  const isWrappedInLayerAtRule = traverseParentRules(parent, secondaryOptions);
 
   if (!isWrappedInLayerAtRule) {
     const name = (() => {
@@ -37,10 +67,10 @@ function testIfWrappedInLayer(decl: Declaration, result: PostcssResult) {
         case "atrule":
         case "root":
           // @ts-ignore
-          return parent.name;
+          return parentName;
         default:
           // @ts-ignore
-          return parent.selector;
+          return parentSelector;
       }
     })();
 
@@ -53,7 +83,7 @@ function testIfWrappedInLayer(decl: Declaration, result: PostcssResult) {
   }
 }
 
-const ruleFunction: Rule = (primary, secondaryOptions, options) => {
+const ruleFunction: Rule<PrimaryOption> = (primary, _secondaryOptions, options) => {
   return (root, result) => {
     const validOptions = validateOptions(result, ruleName, {
       actual: primary,
@@ -62,7 +92,9 @@ const ruleFunction: Rule = (primary, secondaryOptions, options) => {
 
     if (!validOptions) return;
 
-    root.walkDecls((decl) => testIfWrappedInLayer(decl, result));
+    const secondaryOptions: SecondaryOptions = { ...ruleDefaultSecondaryOptions, ..._secondaryOptions };
+
+    root.walkDecls((decl) => testIfWrappedInLayer(decl, result, secondaryOptions));
   };
 };
 

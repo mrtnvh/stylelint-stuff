@@ -17,6 +17,7 @@
     "dist"
   ],
   "scripts": {
+    "dev": "npm run build -- -w",
     "build": "pkgroll",
     "lint": "stylelint -c src/__tests__/stylelint.test.config.cjs src/__tests__/*.css",
     "test": "node --test",
