@@ -57,19 +57,15 @@ function testIfWrappedInLayer(decl: Declaration, result: PostcssResult, secondar
   // @ts-ignore
   const parentSelector = parent.selector as string;
 
-  if (testIfNodeToIgnore(parent, secondaryOptions)) return;
-
-  const isWrappedInLayerAtRule = traverseParentRules(parent, secondaryOptions);
+  const isWrappedInLayerAtRule = traverseParentRules(decl as unknown as Container<ChildNode>, secondaryOptions);
 
   if (!isWrappedInLayerAtRule) {
     const name = (() => {
       switch (parent.type) {
         case "atrule":
         case "root":
-          // @ts-ignore
           return parentName;
         default:
-          // @ts-ignore
           return parentSelector;
       }
     })();

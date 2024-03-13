@@ -20,16 +20,17 @@
     "dev": "npm run build -- -w",
     "build": "pkgroll",
     "lint": "stylelint -c src/__tests__/stylelint.test.config.cjs src/__tests__/*.css",
-    "test": "node --test",
+    "test": "node --import tsx --test ./src/**/*.test.ts",
     "test:watch": "node --test --watch"
   },
   "peerDependencies": {
     "stylelint": "^15.11.0"
   },
   "devDependencies": {
+    "@matteo.collina/snap": "^0.2.1",
     "pkgroll": "^2.0.2",
-    "snapshot-assertion": "^5.0.0",
     "stylelint": "^15.11.0",
+    "tsx": "^4.7.1",
     "typescript": "^5.4.2"
   },
   "volta": {

@@ -12,5 +12,8 @@
   },
   "volta": {
     "node": "20.8.0"
+  },
+  "devDependencies": {
+    "np": "^10.0.1"
   }
 }
